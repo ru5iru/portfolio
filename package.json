@@ -19,6 +19,9 @@
   "author": "Rusiru Rathmina",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "browser-sync": "^3.0.2",
     "gh-pages": "^6.1.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",

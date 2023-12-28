@@ -5,7 +5,7 @@ const sass = require('gulp-sass');
 const wait = require('gulp-wait');
 const babel = require('gulp-babel');;
 const rename = require('gulp-rename');
-var deploy      = require('gulp-gh-pages');
+var deploy = require('gulp-gh-pages');
 
 gulp.task('deploy', function () {
     return gulp.src("./dist/**/*")
@@ -33,7 +33,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function () {
-    return gulp.src('./scss/styles.scss')
+    return gulp.src('./scss/styless.scss')
         .pipe(wait(250))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest('./css'));
