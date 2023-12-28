@@ -416,10 +416,10 @@ footer {
 	margin-bottom: 50px;
 }
 .education-block {
-	max-width: 700px;
-	margin: 0 auto 30px auto;
+	width: 500px;
+	/* margin: 0 auto 30px auto; */
 	padding: 15px;
-	border: 1px solid #dcd9d9;
+	/* border: 1px solid #dcd9d9; */
 	text-align: left;
 }
 .education-block h3 {
@@ -430,7 +430,7 @@ footer {
 }
 .education-block span {
 	color: #74808a;
-	float: right;
+	/* float: right; */
 }
 .education-block h4 {
 	color: #74808a;
@@ -456,6 +456,71 @@ footer {
 	color: #374054;
 	margin-bottom: 50px;
 }
+
+/* New */
+
+.education-new {
+	position: relative;
+	max-width: 900px;
+	margin: 0 auto 30px auto;
+	overflow: hidden;
+	background: #fff;
+	border-radius: 4px;
+}
+/* .education-image {
+	float: left;
+} */
+.education-info-new {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: 300px;
+	padding: 15px;
+}
+
+.new-edu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.new-education-block {
+	max-width: 700px;
+	/* margin: 0 auto 30px auto; */
+	padding: 15px;
+	border: 1px solid #dcd9d9;
+	text-align: left;
+}
+.education-info-new h3 {
+	font-weight: 500;
+	float: left;
+	margin: 0;
+	color: #374054;
+}
+.education-info-new span {
+	color: #74808a;
+	float: right;
+}
+.education-info-new h4 {
+	color: #74808a;
+	clear: both;
+	font-weight: 500;
+	margin: 0 0 15px 0;
+}
+.education-info-new p,
+.education-info-new ul {
+	margin: 0;
+	color: #74808a;
+	font-size: 0.9em;
+}
+.education-info-new ul {
+	padding: 0 0 0 15px;
+}
+
+/* ----- */
+
 .project {
 	position: relative;
 	max-width: 900px;
@@ -711,6 +776,31 @@ footer {
 	.project-image {
 		display: none;
 	}
+
+    /* New */
+    .education-info-new {
+		position: relative;
+		margin: 0;
+		padding: 30px 15px;
+		top: auto;
+		transform: none;
+	}
+
+    .education-image {
+		display: none;
+	}
+
+    .education-info-new h3,
+	.education-info-new span {
+		float: none;
+	}
+
+    .education-block{
+        border: 1px solid #dcd9d9;
+    }
+
+    /* ---- */
+
 	.project-info {
 		position: relative;
 		margin: 0;
