@@ -467,9 +467,15 @@ footer {
 	font-weight: 500;
 	margin: 0 0 15px 0;
 }
+.education-block h5 {
+	color: #74808a;
+	clear: both;
+	font-weight: 500;
+	margin: 0 0;
+}
 .education-block p,
 .education-block ul {
-	margin: 0;
+	margin: 0 0 15px 0;
 	color: #74808a;
 	font-size: 0.9em;
 }
@@ -557,6 +563,7 @@ footer {
 	overflow: hidden;
 	background: #fff;
 	border-radius: 4px;
+	text-align: left;
 }
 .project-image {
 	float: left;
@@ -566,11 +573,11 @@ footer {
 	top: 50%;
 	transform: translateY(-50%);
 	margin-left: 300px;
-	padding: 15px;
+	padding: 30px;
 }
 .project-info h3 {
 	font-size: 1.5em;
-	font-weight: 300;
+	font-weight: 500;
 	color: #374054;
 	margin: 0 0 15px 0;
 }
