@@ -47,9 +47,3 @@ gulp.task('watch', function() {
     gulp.watch('./js/scripts.js', gulp.series('scripts'));
     gulp.watch('./scss/styles.scss', gulp.series('styles'));
 });
-
-gulp.watch(['./**/*.{scss,css,html,py,js}'], ['clearCache', browserSync.reload]);
-
-gulp.task('clearCache', function (done) {
-   return cache.clearAll(done);
-});
