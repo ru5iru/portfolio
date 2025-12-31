@@ -102,16 +102,14 @@
 
        const $projects = $("#projects");
 
-       $(this).fadeOut(300, function () {
-          $("#more-projects").fadeOut(300, function () {
-             $("html, body").animate(
-                { scrollTop: $projects.offset().top },
-                400
-             );
-          });
+        $("#more-projects").fadeOut(300, function () {
+            $("html, body").animate(
+            { scrollTop: $projects.offset().top },
+            400
+            );
+        });
 
-          $("#view-more-projects").fadeIn(300);
-       });
+        $("#view-more-projects").fadeIn(300);
     });
 
 
