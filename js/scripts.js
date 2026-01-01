@@ -1,116 +1,79 @@
-/*!
-    Title: Dev Portfolio Template
-    Version: 1.2.2
-    Last Change: 03/25/2020
-    Author: Ryan Fitzgerald
-    Repo: https://github.com/RyanFitzgerald/devportfolio-template
-    Issues: https://github.com/RyanFitzgerald/devportfolio-template/issues
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // Update Year
+    const yearSpan = document.getElementById("current-year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 
-    Description: This file contains all the scripts associated with the single-page
-    portfolio website.
-*/
+    // Mobile Menu
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const menuList = document.getElementById("menu");
 
-(function($) {
-
-    // Show current year
-    $("#current-year").text(new Date().getFullYear());
-
-    // Remove no-js class
-    $('html').removeClass('no-js');
-
-    // Animate to section when nav is clicked
-    $('header a').click(function(e) {
-
-        // Treat as normal link if no-scroll class
-        if ($(this).hasClass('no-scroll')) return;
-
-        e.preventDefault();
-        var heading = $(this).attr('href');
-        var scrollDistance = $(heading).offset().top;
-
-        $('html, body').animate({
-            scrollTop: scrollDistance + 'px'
-        }, Math.abs(window.pageYOffset - $(heading).offset().top) / 1);
-
-        // Hide the menu once clicked if mobile
-        if ($('header').hasClass('active')) {
-            $('header, body').removeClass('active');
-        }
-    });
-
-    // Scroll to top
-    $('#to-top').click(function() {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 500);
-    });
-
-    // Scroll to first element
-    $('#lead-down span').click(function() {
-        var scrollDistance = $('#lead').next().offset().top;
-        $('html, body').animate({
-            scrollTop: scrollDistance + 'px'
-        }, 500);
-    });
-
-    // Create timeline
-    $('#experience-timeline').each(function() {
-
-        $this = $(this); // Store reference to this
-        $userContent = $this.children('div'); // user content
-
-        // Create each timeline block
-        $userContent.each(function() {
-            $(this).addClass('vtimeline-content').wrap('<div class="vtimeline-point"><div class="vtimeline-block"></div></div>');
+    if (menuToggle && menuList) {
+        menuToggle.addEventListener("click", () => {
+            menuList.classList.toggle("active");
         });
-
-        // Add icons to each block
-        $this.find('.vtimeline-point').each(function() {
-            $(this).prepend('<div class="vtimeline-icon"><i class="fa fa-map-marker"></i></div>');
+        document.querySelectorAll("header ul li a").forEach(link => {
+            link.addEventListener("click", () => {
+                menuList.classList.remove("active");
+            });
         });
+    }
 
-        // Add dates to the timeline if exists
-        $this.find('.vtimeline-content').each(function() {
-            var date = $(this).data('date');
-            if (date) { // Prepend if exists
-                $(this).parent().prepend('<span class="vtimeline-date">'+date+'</span>');
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === "#") return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70, 
+                    behavior: 'smooth'
+                });
             }
         });
-
     });
 
-    // Open mobile menu
-    $('#mobile-menu-open').click(function() {
-        $('header, body').addClass('active');
-    });
-
-    // Close mobile menu
-    $('#mobile-menu-close').click(function() {
-        $('header, body').removeClass('active');
-    });
-
-    // Load additional projects
-    $('#view-more-projects').click(function(e){
-        e.preventDefault();
-        $(this).fadeOut(300, function() {
-            $('#more-projects').fadeIn(300);
+    // Sticky Header
+    const header = document.querySelector("header");
+    if (header) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
+            } else {
+                header.style.boxShadow = "none";
+            }
         });
-    });
+    }
 
-    $("#view-less").click(function (e) {
-       e.preventDefault();
+    // Show More / Less Projects
+    const moreProjectsContainer = document.getElementById("more-projects");
+    const viewMoreBtn = document.getElementById("view-more-btn");
+    const viewLessBtn = document.getElementById("view-less-btn");
+    const projectsSection = document.getElementById("projects");
 
-       const $projects = $("#projects");
-
-        $("#more-projects").fadeOut(300, function () {
-            $("html, body").animate(
-            { scrollTop: $projects.offset().top },
-            400
-            );
+    if (moreProjectsContainer && viewMoreBtn && viewLessBtn) {
+        viewMoreBtn.addEventListener("click", function() {
+            moreProjectsContainer.classList.add("active");
+            viewMoreBtn.classList.add("hidden");
+            viewLessBtn.classList.remove("hidden");
         });
 
-        $("#view-more-projects").fadeIn(300);
-    });
-
-
-})(jQuery);
+        viewLessBtn.addEventListener("click", function() {
+            moreProjectsContainer.classList.remove("active");
+            viewLessBtn.classList.add("hidden");
+            viewMoreBtn.classList.remove("hidden");
+            
+            if (projectsSection) {
+                const headerOffset = 80;
+                const elementPosition = projectsSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            }
+        });
+    }
+});
