@@ -2,7 +2,7 @@
 
 # Allow all search engines to crawl everything
 User-agent: *
-Allow: /
+Disallow: /
 
 # Disallow crawling of certain directories (if you have any)
 # Uncomment these if you have these folders and don't want them indexed
@@ -11,7 +11,7 @@ Allow: /
 # Disallow: /libs/
 
 # Sitemap location
-Sitemap: https://ru5iru.github.io/portfolio/sitemap.xml
+# Sitemap: https://ru5iru.github.io/portfolio/sitemap.xml
 
 # Crawl-delay (optional - helps prevent server overload)
 # Crawl-delay: 10
